@@ -2,20 +2,31 @@
 
 import * as Home from "./Home.js";
 import * as React from "react";
+import * as PromiseSimple from "./PromiseSimple.js";
 import * as UncaughtSimple from "./UncaughtSimple.js";
 import * as RescriptReactRouter from "../node_modules/@rescript/react/src/RescriptReactRouter.js";
 
 function App(Props) {
   var url = RescriptReactRouter.useUrl(undefined, undefined);
   var match = url.path;
-  if (match) {
-    if (match.hd === "uncaught-simple" && !match.tl) {
-      return React.createElement(UncaughtSimple.make, {});
-    } else {
-      return "404";
-    }
-  } else {
+  if (!match) {
     return React.createElement(Home.make, {});
+  }
+  switch (match.hd) {
+    case "promise-simple" :
+        if (match.tl) {
+          return "404";
+        } else {
+          return React.createElement(PromiseSimple.make, {});
+        }
+    case "uncaught-simple" :
+        if (match.tl) {
+          return "404";
+        } else {
+          return React.createElement(UncaughtSimple.make, {});
+        }
+    default:
+      return "404";
   }
 }
 
