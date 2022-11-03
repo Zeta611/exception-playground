@@ -5,7 +5,7 @@ import * as React from "react";
 function Home(Props) {
   return React.createElement("div", {
               className: "font-semibold dark:text-white"
-            }, "Hello, World!");
+            }, "Exception Playground");
 }
 
 var make = Home;

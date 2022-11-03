@@ -5,6 +5,7 @@ let make = () => {
   {
     switch url.path {
     | list{} => <Home />
+    | list{"uncaught-simple"} => <UncaughtSimple />
     | _ => React.string("404")
     }
   }
